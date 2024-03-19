@@ -7,7 +7,7 @@ pipeline{
         }
     }
      environment {
-        ANDROID_HOME "/home/circleci/android-sdk"
+        ANDROID_HOME '/home/circleci/android-sdk'
         //GRADLE_CACHE = '/tmp/gradle-user-home'
       }
     stages {
