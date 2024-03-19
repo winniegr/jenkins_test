@@ -6,10 +6,10 @@ pipeline{
            // args '-v $HOME/.gradle:/home/.gradle -v $HOME/.m2:/home/.m2'
         }
     }
-     // environment {
-     //    HOME = '~/'
-     //    GRADLE_CACHE = '/tmp/gradle-user-home'
-     //  }
+     environment {
+        ANDROID_HOME "/home/circleci/android-sdk"
+        //GRADLE_CACHE = '/tmp/gradle-user-home'
+      }
     stages {
         // stage('Prepare container') {
         //   steps {
@@ -21,8 +21,8 @@ pipeline{
         stage('Setup') {
           steps {
               sh 'chmod +x ./gradlew'
-              sh 'chmod 777 /home/.m2'
-              sh 'chmod 777 /home/.gradle'
+              // sh 'chmod 777 /home/.m2'
+              // sh 'chmod 777 /home/.gradle'
           }
         }
         stage('Build'){
