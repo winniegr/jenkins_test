@@ -2,7 +2,7 @@ pipeline{
     agent {
         docker {
             image 'cimg/android:2023.09.1'
-            args '-v $HOME/.m2:/home/.m2'
+            args '-v $HOME/.gradle:/home/.gradle -v $HOME/.m2:/home/.m2'
         }
     }
     stages {
@@ -10,6 +10,7 @@ pipeline{
           steps {
               sh 'chmod +x ./gradlew'
               sh 'chmod 777 /home/.m2'
+              sh 'chmod 777 /home/.gradle'
           }
         }
         stage('Build'){
