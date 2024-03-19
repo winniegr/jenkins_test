@@ -2,7 +2,7 @@ pipeline{
     agent {
         docker {
             image 'cimg/android:2023.09.1'
-             args  '-v $HOME/.gradle/:/root/.gradle/:rw'
+            // args  '-v $HOME/.gradle/:/root/.gradle/:rw'
            // args '-v $HOME/.gradle:/home/.gradle -v $HOME/.m2:/home/.m2'
         }
     }
