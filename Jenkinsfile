@@ -2,7 +2,7 @@ pipeline{
     agent {
         docker {
             image 'cimg/android:2023.09.1'
-            //args  '-v /var/cache/gradle:/tmp/gradle-user-home:rw'
+             args  '-v ~/.gradle/:/root/.gradle/:rw'
            // args '-v $HOME/.gradle:/home/.gradle -v $HOME/.m2:/home/.m2'
         }
     }
@@ -11,13 +11,13 @@ pipeline{
      //    GRADLE_CACHE = '/tmp/gradle-user-home'
      //  }
     stages {
-        stage('Prepare container') {
-          steps {
-            // Copy the Gradle cache from the host, so we can write to it
-            sh "rsync -a --include /caches --include /wrapper --exclude '/*' /home/.gradle $HOME/.gradle || true"
-             sh "rsync -a --include /caches --include /wrapper --exclude '/*' /home/.m2 $HOME/.m2 || true"
-          }
-        }
+        // stage('Prepare container') {
+        //   steps {
+        //     // Copy the Gradle cache from the host, so we can write to it
+        //     sh "rsync -a --include /caches --include /wrapper --exclude '/*' /home/.gradle $HOME/.gradle || true"
+        //      sh "rsync -a --include /caches --include /wrapper --exclude '/*' /home/.m2 $HOME/.m2 || true"
+        //   }
+        // }
         stage('Setup') {
           steps {
               sh 'chmod +x ./gradlew'
